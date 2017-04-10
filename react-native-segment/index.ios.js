@@ -16,11 +16,6 @@ import SegmentControl from "./Segment"
 var full_width = Dimensions.get('window').width
 const titleList=["第一份","第二份","第三份"]
 export default class Segment extends Component {
-
-  exchange(){
-
-  }
-
   render() {
     return (
       <View style={styles.container}>

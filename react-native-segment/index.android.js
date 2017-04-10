@@ -11,21 +11,18 @@ import {
   Text,
   View
 } from 'react-native';
-
+import SegmentControl from "./Segment"
+var full_width = Dimensions.get('window').width
+const titleList=["第一份","第二份","第三份"]
 export default class Segment extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
-        </Text>
+        <SegmentControl 
+          style = {{width:full_width,height:40,backgroundColor:'#fff',flexDirection:'row'}}
+          titleArray = {titleList}
+          exchange = {(msg)=>this.exchange(msg)}
+        />
       </View>
     );
   }
