@@ -55,18 +55,19 @@ export default class Footer extends Component {
   };
   render() {
     const { cartData } = this.props;
+
     return (
       <View style={styles.root}>
         <View style={styles.selectWrapper}>
           <Circle onPress={this.selectAll} />
           <Text style={styles.selectText}>全选</Text>
         </View>
-        <Text>总计：￥{cartData.sum.get()}</Text>
+        <Text>总计：￥{cartData.sum()}</Text>
         <TouchableOpacity
           style={styles.checkout}
           onPress={this.checkout}
         >
-          <Text style={styles.checkoutText}>去结算({cartData.count.get()})</Text>
+          <Text style={styles.checkoutText}>去结算({cartData.count()})</Text>
         </TouchableOpacity>
       </View>
     );

@@ -67,15 +67,16 @@ export default class Item extends Component {
     cartData.plus(index);
   };
   render() {
-    const { index, data: { id, name, price, count, img, checked } } = this.props;
+    const { index, data: { cartNo, prodName, standard, count, oldPrice, nowPrice,imgUrl,brcProdNo,skuNo,prodNo } } = this.props;
+    console.log(this.props.data.imgUrl)
     return (
       <View style={styles.root}>
         <Circle onPress={this.check} />
-        <Image style={styles.img} source={{uri: img}} />
+        <Image style={styles.img} source={{uri: imgUrl}} />
         <View style={styles.content}>
-          <Text style={styles.name}>{name}</Text>
+          <Text style={styles.name}>{prodName}</Text>
           <View style={styles.priceAndControls}>
-            <Text style={styles.price}>￥{price.toFixed(2)}</Text>
+            <Text style={styles.price}>￥{oldPrice}</Text>
             <TouchableOpacity
               style={styles.button}
               onPress={this.minus}
