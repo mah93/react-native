@@ -2,50 +2,108 @@
 import { observable, computed, action} from 'mobx';
 import Fetch from '../utils/Fetch'
 
+// class shopCarItem {
+//   @observable
+//   item = [];
+
+//   @observable
+//   checked = false;
+
+//   constructor(item) {
+//     this.item = item;
+//   }
+
+//   @action
+//   minus(index) {
+//     this.item[index].count -= 1;
+//   };
+//   @action
+//   plus(index){
+//     this.item[index].count += 1;
+//   };
+// }
+
 class shopCar {
-  @observable data;
+  @observable 
+  data = [];
+ 
   constructor() {
     Fetch.post('http://192.168.0.10:8088/cart/findShoppingCart',{
         brcNo:'2',
         userNo:'1',
       }).done((data)=>{
         if (data.retCode == '1') {
-          console.log('12345678')
-          this.data = data.shoppingCartListReturnVO
+          const dataSource = data.shoppingCartListReturnVO;
+          for (const i in dataSource) {
+            dataSource[i]['checked'] = false
+          }
+          this.data.replace(dataSource)
         }
       })
   }
+
+  @action
   minus(index) {
-    // const count = Number(this.data[index].count);
-    // parseInt(this.data[index].count) -= 1;
-    // console.log(parseInt(this.data[index].count))
     this.data[index].count -= 1;
   };
+  @action
   plus(index){
-    // const count = Number(this.data[index].count);
-    // parseInt(this.data[index].count)  += 1;
-    // console.log(parseInt(this.data[index].count))
     this.data[index].count += 1;
-
   };
 
-  count(){
+  @action
+  check(index,checked) {
+    this.data[index].checked = checked;
+  };
+
+  @action
+  selectAll(checked) {
+    console.log(checked)
+    console.log(this.data.length)
+
+    for (let i = 0;i <= this.data.length ;i ++ ) {
+            console.log(i)
+
+    }
+
+    // for (const i in this.data) {
+    //   console.log(i)
+    //   this.data[i].checked = checked
+    // }
+  }
+
+  @computed
+  get count(){
+
     return this.data.reduce((a, b) => {
-      return a + b.count;
+      console.log(a)
+      if (b.checked) {
+        return a + b.count;
+      }
+      else {
+        return a;
+      }
     }, 0);
+
   };
 
-  sum() {
+  @computed
+  get sum() {
     return this.data.reduce((a, b) => {
-      return a + b.count * b.oldPrice;
+      if (b.checked) {
+        return a + b.count * b.oldPrice;
+      }
+      else {
+        return a;
+      }
     }, 0);
   };
 
 }
 
-const carData = new shopCar()
+// const carData = new shopCar()
 
-export default carData
+export default shopCar
 
 
 

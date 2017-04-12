@@ -8,10 +8,12 @@ import {
 
 // import { observer } from 'mobx-react/native';
 
-import cartData from '../logics/carDara';
+import ShopCar from '../logics/carDara';
 import Header from '../components/header';
 import ItemList from '../components/itemlist';
 import Footer from '../components/footer';
+import {observer} from 'mobx-react/native'
+
 
 const styles = StyleSheet.create({
   root: {
@@ -23,6 +25,9 @@ const styles = StyleSheet.create({
 export default class ShopCart extends Component {
   render() {
     const { navigator } = this.props;
+    cartData = new ShopCar()
+    console.log(cartData.data)
+    console.log(cartData.data.slice(0))
     return (
       <View style={styles.root}>
         <Header navigator={navigator}/>

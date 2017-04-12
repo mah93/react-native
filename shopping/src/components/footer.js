@@ -51,7 +51,8 @@ export default class Footer extends Component {
     navigator.pop();
   };
   selectAll = (checked) => {
-    alert(checked);
+    const { cartData } = this.props;
+    cartData.selectAll(checked);
   };
   render() {
     const { cartData } = this.props;
@@ -62,12 +63,12 @@ export default class Footer extends Component {
           <Circle onPress={this.selectAll} />
           <Text style={styles.selectText}>全选</Text>
         </View>
-        <Text>总计：￥{cartData.sum()}</Text>
+        <Text>总计：￥{cartData.sum}</Text>
         <TouchableOpacity
           style={styles.checkout}
           onPress={this.checkout}
         >
-          <Text style={styles.checkoutText}>去结算({cartData.count()})</Text>
+          <Text style={styles.checkoutText}>去结算({cartData.count})</Text>
         </TouchableOpacity>
       </View>
     );

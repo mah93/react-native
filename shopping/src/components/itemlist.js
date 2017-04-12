@@ -5,6 +5,8 @@ import {
   View,
 } from 'react-native';
 import Item from './item';
+import {observer} from 'mobx-react/native'
+
 const styles = StyleSheet.create({
   root: {
     flex: 1,
@@ -12,11 +14,11 @@ const styles = StyleSheet.create({
 });
 
 
-
+@observer
 export default class ItemList extends Component {
   render() {
     const { cartData } = this.props;
-    console.log(cartData.data.slice(0));
+    console.log(cartData.data.length);
     return (
       <ScrollView style={styles.root}>
         {

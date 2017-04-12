@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
 export default class Item extends Component {
   check = (checked) => {
     const { index, cartData } = this.props;
-    cartData.check(checked, index);
+    cartData.check(index, checked);
   };
   minus = () => {
     const { index, data: { count }, cartData } = this.props;
@@ -68,7 +68,7 @@ export default class Item extends Component {
   };
   render() {
     const { index, data: { cartNo, prodName, standard, count, oldPrice, nowPrice,imgUrl,brcProdNo,skuNo,prodNo } } = this.props;
-    console.log(this.props.data.imgUrl)
+    console.log('更新数据' + index)
     return (
       <View style={styles.root}>
         <Circle onPress={this.check} />
