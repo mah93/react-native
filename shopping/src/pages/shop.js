@@ -6,8 +6,6 @@ import {
   Text
 } from 'react-native';
 
-// import { observer } from 'mobx-react/native';
-
 import ShopCar from '../logics/carDara';
 import Header from '../components/header';
 import ItemList from '../components/itemlist';
