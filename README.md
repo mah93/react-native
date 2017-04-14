@@ -59,3 +59,12 @@ react-native run-ios
       exchange = {(msg)=>this.exchange(msg)}
     />   
   ```
+
+* ### shopping
+  用mobx编写的购物车，了解mobx工作原理。
+  
+  
+* ### flatlist
+  学习FlatList写法，比较其与ListView的性能
+
+
