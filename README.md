@@ -67,4 +67,10 @@ react-native run-ios
 * ### flatlist
   学习FlatList写法，比较其与ListView的性能
 
+* ### animate   
+  react-native下的animate API，完成旋转、平移、缩放等操作    
+  
+* ### blur
+  添加毛玻璃效果，以及登录界面用户名密码输入框动态切换效果
+  
 
